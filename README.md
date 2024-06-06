@@ -67,6 +67,7 @@ This README is divided into several sections:
 * [Naming conventions](#naming-conventions)
 * [API versions](#api-versions)
 * [Working with DTOs](#working-with-dtos)
+* [Contributing](#contributing)
 
 ## Getting Started
 
@@ -540,3 +541,19 @@ $response = $ordersApi->confirmShipment(
     confirmShipmentRequest: $confirmShipmentRequest,
 )
 ```
+
+## Contributing
+
+To regenerate the library, you can run 
+
+    # composer clean
+    # composer build
+
+Composer has a number of pre-configured scripts in `composer.json`:
+
+* `build`: Run all the stages to regenerate the PHP files
+* `clean`: Delete all the generated PHP and JSON files
+* `lint`: Run PHP-CS-Fixer 
+* `schema:download`: Download the schemas from Amazon
+* `schema:generate`: Generate the PHP files from the schemas
+* `schema:refactor`: Make local modifications to the schemas before generation
