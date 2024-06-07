@@ -37,8 +37,8 @@ class RequestGenerator extends SDKGenerator
         $classType->setExtends($baseRequestClass)
             ->setComment($endpoint->name);
 
-        // TODO: We assume JSON body if post/patch, make these assumptions configurable in the future.
-        if ($endpoint->method->isPost() || $endpoint->method->isPatch()) {
+        // TODO: We assume JSON body if put/post/patch, make these assumptions configurable in the future.
+        if ($endpoint->bodySchema?->bodyContentType === 'application/json' && ($endpoint->method->isPut() || $endpoint->method->isPost() || $endpoint->method->isPatch())) {
             $classType
                 ->addImplement(HasBody::class)
                 ->addTrait(HasJsonBody::class);
